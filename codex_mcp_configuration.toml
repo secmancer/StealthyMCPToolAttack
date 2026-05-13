@@ -1,0 +1,7 @@
+[mcp_servers.test]
+command = "python3"
+args = ["/home/adan/Documents/Projects/TIPExploit/test_mcp.py"]
+enabled = true
+
+[mcp_servers.test.tools.test]
+approval_mode = "approve"

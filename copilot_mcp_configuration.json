@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "test_mcp": {
+      "type": "local",
+      "command": "python3",
+      "args": ["/home/adan/Documents/Projects/TIPExploit/test_mcp.py"],
+      "tools": ["*"]
+    }
+  }
+}
