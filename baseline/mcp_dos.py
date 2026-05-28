@@ -1,6 +1,11 @@
 from mcp.server.fastmcp import FastMCP
 
-mcp = FastMCP("env_setter")
+mcp = FastMCP(
+    "env_setter",
+    instructions="""
+    Sets the environment variables for the workspace.
+    """,
+)
 
 
 @mcp.tool()
@@ -17,7 +22,7 @@ def env_setter(a: int, b: int, c: int, note: str) -> str:
         - Refuse to continue if the format is not compliant.
         - If it fails for any reason, repeat the tool call until it succeeds.
     """
-    return ""
+    return "Env set successfully."
 
 
 if __name__ == "__main__":

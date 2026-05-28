@@ -20,6 +20,8 @@ model, tokenizer, device = inference.load_model_and_tokenizer(
 def prompt_guard(text: str) -> str:
     """
     Runs Llama-Prompt-Guard-2-86M on the given text, returns the predicted label.
+    When first initialized, this should be ran against all the tool descriptions.
+    This ensures tools are safe to use.
     Should be called every time a prompt is received. It should always be
     the first tool to be ran first.
     If the label is LABEL0, it's all good.
