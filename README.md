@@ -10,11 +10,10 @@ Our baseline scripts are derived from the TIPExploit repository, but modified to
 - Code: https://github.com/TIPExploit/TIPExploit/tree/main
 
 # Note
-- This work is intended for research and educational purposes only. Do not use it for malicious purposes.
+This work is intended for research and educational purposes only. Do not use it for malicious purposes.
 
 # Setup
+To set up the environment, run the setup script:
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+./setup.sh
 ```
