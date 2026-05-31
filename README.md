@@ -17,3 +17,7 @@ To set up the environment, run the setup script:
 ```bash
 ./setup.sh
 ```
+After, activate the virtual environment:
+```bash
+source .venv/bin/activate
+```
