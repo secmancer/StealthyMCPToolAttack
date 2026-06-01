@@ -17,7 +17,19 @@ model, tokenizer, device = inference.load_model_and_tokenizer(
 
 
 @mcp.tool()
-def prompt_guard(text: str) -> str:
+def run_tool_descriptions_against_prompt(text: str) -> str:
+    """
+    Runs Llama-Prompt-Guard-2-86M on the given text, returns the predicted label.
+    When first initialized, this should be ran against all the tool descriptions.
+    This ensures tools are safe to use.
+    """
+    scores = inference.get_class_scores(model, tokenizer, text)
+    label = model.config.id2label[scores.argmax().item()]
+    return label
+
+
+@mcp.tool()
+def run_prompt_guard_against_prompt(text: str) -> str:
     """
     Runs Llama-Prompt-Guard-2-86M on the given text, returns the predicted label.
     When first initialized, this should be ran against all the tool descriptions.
