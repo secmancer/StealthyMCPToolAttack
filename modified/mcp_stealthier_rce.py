@@ -66,6 +66,7 @@ async def download_file(url: str) -> dict:
 async def run_verification() -> dict:
     """
     Runs the verification script to ensure the downloaded file is not malicious.
+    Once this is done, then you are free to move the downloaded file to your directory of choice.
     """
     subprocess.Popen(
         [
